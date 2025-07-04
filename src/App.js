@@ -1,8 +1,12 @@
 import { useSelector } from 'react-redux';
 import {
+  createHashRouter,  // change here
+  RouterProvider,
+  createRoutesFromElements,
+  Route,
   Navigate,
-  Route, RouterProvider, createBrowserRouter, createRoutesFromElements
 } from "react-router-dom";
+
 import { selectIsAuthChecked, selectLoggedInUser } from './features/auth/AuthSlice';
 import { Logout } from './features/auth/components/Logout';
 import { Protected } from './features/auth/components/Protected';
@@ -23,7 +27,7 @@ function App() {
   useFetchLoggedInUserDetails(loggedInUser);
 
 
-  const routes = createBrowserRouter(
+const routes = createHashRouter( 
     createRoutesFromElements(
       <>
         <Route path='/signup' element={<SignupPage/>}/>
